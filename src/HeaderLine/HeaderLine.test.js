@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import HeaderLine from './HeaderLine'; 
+import CheckPropTypes from 'check-prop-types';
 
 
 const setUp = (props ={})=>
@@ -10,6 +11,29 @@ const setUp = (props ={})=>
 }
 
 describe('HeaderLine Component',()=>{
+    
+    describe('Checking PropTypes',() =>
+    {
+        it('Should not thorow a error',() =>
+        {
+            const expectedProps = {
+                header:'Test Header',
+                desc:'Test Description',
+                tempArray:[{
+                    fName:'Joe',
+                    lName:'Doe',
+                    email:'Joe@gmail.com',
+                    age:12,
+                    onLineStatus:true
+                }]
+            }
+            const propsErr = CheckPropTypes(HeaderLine.PropTypes,expectedProps,"props",HeaderLine.name);
+            expect(propsErr).toBeUndefined();
+
+        })
+    })
+
+
     describe('Have props',() =>
     {
         let component;

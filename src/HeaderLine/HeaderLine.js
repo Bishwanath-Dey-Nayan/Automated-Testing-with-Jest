@@ -1,9 +1,11 @@
 import React from 'react';
+import propTypes from 'prop-types';
+
 
 export default class HeaderLine extends React.Component{
     render()
     {
-        const {header,desc} = this.props;
+        const {header,desc,tempArray} = this.props;
         if( !header )
         {
             return null;
@@ -15,4 +17,15 @@ export default class HeaderLine extends React.Component{
             </div>
         );
     }
+}
+HeaderLine.propTypes = {
+    header:propTypes.string,
+    desc : propTypes.string,
+    tempArray:propTypes.arrayOf(propTypes.shape({
+        fName:propTypes.string,
+        lName:propTypes.string,
+        email:propTypes.string,
+        age:propTypes.number,
+        onLineStatus:propTypes.bool
+    }))
 }
