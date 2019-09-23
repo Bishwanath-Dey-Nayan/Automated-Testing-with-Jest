@@ -38,7 +38,7 @@ class App extends React.Component {
       emitEvent:this.fetch
     }
   return (
-    <div className="App">
+    <div className="App" data-test="appComponent">
       <Header />
       <HeaderLine 
       header="HeaderLine"
