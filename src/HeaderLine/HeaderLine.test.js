@@ -11,11 +11,12 @@ const setUp = (props ={})=>
 }
 
 describe('HeaderLine Component',()=>{
-    
+    //checking the propTypes
     describe('Checking PropTypes',() =>
     {
         it('Should not thorow a error',() =>
         {
+            //creating the expected props
             const expectedProps = {
                 header:'Test Header',
                 desc:'Test Description',
@@ -27,6 +28,7 @@ describe('HeaderLine Component',()=>{
                     onLineStatus:true
                 }]
             }
+            //checking wheater the expected props mathch with the types(expectd in component) 
             const propsErr = CheckPropTypes(HeaderLine.PropTypes,expectedProps,"props",HeaderLine.name);
             expect(propsErr).toBeUndefined();
 

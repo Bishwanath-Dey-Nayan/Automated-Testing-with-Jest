@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Header from './Header';
 import { isTSAnyKeyword } from '@babel/types';
 
-
+//gives the parsed elements of the component as return
 const setUp = (props={}) =>
 {
     const component = shallow(<Header {...props} />)
