@@ -38,4 +38,16 @@ describe('AppComponent', () => {
         expect(component.length).toBe(1);
     });
 
+    //test script for testing a mehtod 
+    it('button_Update function updated',() =>
+    {
+        //creating instance of the component "App"
+        const classInstance = wrapper.instance();
+        //firing the method
+        classInstance.button_Update();
+        //reading the state variable
+        const newState = classInstance.state.hideBtn;
+        expect(newState).toBe(false);
+    })
+
 });

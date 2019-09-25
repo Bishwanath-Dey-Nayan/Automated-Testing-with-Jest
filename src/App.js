@@ -17,16 +17,29 @@ const tempArray = [{
   onLineStatus:true
 }]
 
+
 class App extends React.Component {
   constructor(props)
   {
     super(props);
+    this.state ={
+      hideBtn:true
+    }
     this.fetch = this.fetch.bind(this);
   }
 
   fetch()
   {
     this.props.fetchPosts();
+    this.button_Update();
+  }
+
+  button_Update()
+  {
+    const {hideBtn} = this.state;
+    this.setState({
+      hideBtn:!hideBtn
+    })
   }
 
   render(){
@@ -45,9 +58,9 @@ class App extends React.Component {
       desc="This is the description of the Header that you are currently watching"
       tempArray ={tempArray}
       />
-      <SharedButton 
+      {this.state.hideBtn && <SharedButton 
       {...configButton}
-      />
+      />}
       <div>
       {posts.length > 0 &&
             <div>
