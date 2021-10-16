@@ -1,10 +1,12 @@
-import { shallow } from 'enzyme';
-import App from './App';
-import { testStore } from '../Utils/index';
-import React from 'react';
+import rewire from "rewire"
+import { shallow } from "enzyme"
+import { testStore } from "../Utils/index"
+import React from "react"
 
 
 
+const App = rewire("./App")
+const mapStateToProps = App.__get__("mapStateToProps")
 //checking child component that is connected with the parent
 const setUp = (initialState = {}) => {
     const store = testStore(initialState);
@@ -51,3 +53,54 @@ describe('AppComponent', () => {
     })
 
 });
+
+// @ponicode
+describe("mapStateToProps", () => {
+    test("0", () => {
+        let callFunction = () => {
+            mapStateToProps({ posts: [1.0, 1.0, 0.0] })
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+
+    test("1", () => {
+        let callFunction = () => {
+            mapStateToProps({ posts: [-0.5, 0.0, -1.0] })
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+
+    test("2", () => {
+        let callFunction = () => {
+            mapStateToProps({ posts: [-1.0, -29.45, -0.5] })
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+
+    test("3", () => {
+        let callFunction = () => {
+            mapStateToProps({ posts: [1.0, 0.0, 0.5] })
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+
+    test("4", () => {
+        let callFunction = () => {
+            mapStateToProps({ posts: [10.23, 1.0, 10.0] })
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+
+    test("5", () => {
+        let callFunction = () => {
+            mapStateToProps(undefined)
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+})
